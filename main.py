@@ -17,7 +17,6 @@ while number_of_symbols < 8 or number_of_symbols > 20:
 def generate_random(length):
     symbols = ("!@#$%^&*")
     alphabet = string.ascii_letters + string.digits + symbols
-    j = 1
     while True:      
         password = ''.join(secrets.choice(alphabet) for i in range(length))
         if (any(c.islower() for c in password)
@@ -25,8 +24,20 @@ def generate_random(length):
             and any(c.isdigit() for c in password)
             and any(c in symbols for c in password)):
             break
-        j+=1
-        print(j)
-
     return password
-print(generate_random(number_of_symbols))
+password = str(generate_random(number_of_symbols))
+print('Your password: ' + password)
+def write_output(path):
+    if input('Do you want to save the name of the app, login and password? y/n: ') == 'y':
+        app = input('Enter the app name password was created for: ')
+        login = input('Enter your login: ')
+        with open(path, 'a') as f:
+            print('\n' + 'App: ' + app, file=f)
+            print('Login: ' + login, file=f)
+            print('Password: ' + password, file=f)
+            f.write('--------------------')
+        print(f'Your credentials were saved to {path}. Have a great day!')
+    else:
+        print('Have a great day!')
+path = 'C:\\Users\\output.txt'
+write_output(path)
