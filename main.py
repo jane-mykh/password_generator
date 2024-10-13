@@ -1,7 +1,6 @@
 import secrets
 import string
 
-
 print('''Greetings!
 This is a password generator.
 It can generate a password from 8 to 20 symbols.''')
@@ -12,7 +11,6 @@ while number_of_symbols < 8 or number_of_symbols > 20:
         print("The number can't be lesser than 8 or greater than 20")
     else:
         print(f"Generating a password for {number_of_symbols} symbols")
-
 
 def generate_random(length):
     symbols = ("!@#$%^&*")
